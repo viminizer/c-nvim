@@ -18,9 +18,10 @@ If you are interested my currently used personal configuration and setup, you ca
 - [X] editorconf
 - [X] showkey
 - [X] treesitter.nvim
-- [ ] fzflua
-- [ ] which-key
-- [ ] nvim-lspconfig 
+- [X] fzf-lua
+- [X] project.nvim
+- [X] which-key
+- [ ] LSP 
 - [ ] conform.nvim
 - [ ] blink-cmp
 - [ ] snacks.indent
