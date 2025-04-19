@@ -1,4 +1,3 @@
-
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.env" },
   callback = function()
@@ -13,8 +12,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+local function augroup(name)
+  return vim.api.nvim_create_augroup("viminizer_" .. name, { clear = true })
+end
+
 -- autosave session
 vim.api.nvim_create_autocmd("VimLeavePre", {
+  group = augroup("restore_session"),
   callback = function()
     require("persistence").save()
   end,
@@ -22,7 +26,7 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 
 -- load last session
 vim.api.nvim_create_autocmd("VimEnter", {
-  group = vim.api.nvim_create_augroup("restore_session", { clear = true }),
+  group = augroup("restore_session"),
   callback = function()
     if vim.fn.getcwd() ~= vim.env.HOME then
       require("persistence").load()
@@ -31,9 +35,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
   nested = true,
 })
 
-local function augroup(name)
-  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
-end
 
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
