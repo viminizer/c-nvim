@@ -12,6 +12,7 @@ return {
 					["@markup.raw.markdown_inline"]={link = "String"},
 					["@markup.list.markdown"]={link = "Function"},
 					["@markup.quote.markdown"]={link = "Error"},
+					["@markup.list.checked.markdown"]={link = "WarningMsg"},
 				}
 			end
 		});
