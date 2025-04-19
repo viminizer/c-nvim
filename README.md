@@ -21,8 +21,7 @@ If you are interested my currently used personal configuration and setup, you ca
 - [X] fzf-lua
 - [X] project.nvim
 - [X] which-key
-- [ ] LSP 
-- [ ] conform.nvim
-- [ ] blink-cmp
+- [X] LSP 
+- [X] conform.nvim
+- [X] blink-cmp
 - [ ] snacks.indent
-
