@@ -7,6 +7,7 @@ vim.opt.autoindent = true   -- Enable autoindent
 vim.opt.smartindent = true
 vim.opt.tabstop = 4 -- Number of visual spaces per TAB
 vim.opt.shiftwidth = 4 -- Indentation amount for autoindents
+vim.opt.softtabstop=4
 vim.opt.expandtab = true -- Use tabs instead of spaces
 vim.opt.smarttab = true
 vim.opt.cursorline = true
@@ -19,6 +20,27 @@ vim.opt.inccommand = "split"
 vim.opt.scrolloff = 7
 vim.opt.number=true
 vim.opt.relativenumber=true
+vim.opt.ignorecase=true
+vim.opt.smartcase=true
+vim.opt.updatetime=250
+vim.opt.splitright=true
+vim.opt.splitbelow=true 
+vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.confirm=true
+vim.opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.g.markdown_recommended_style = 0
+
+
 
 -- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
