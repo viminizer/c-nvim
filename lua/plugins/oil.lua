@@ -9,6 +9,7 @@ return{
     ,
     float={
       max_width=50,
+      max_height=100,
     }
   },
   -- Optional dependencies
