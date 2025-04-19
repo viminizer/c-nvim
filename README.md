@@ -11,12 +11,13 @@ If you are interested my currently used personal configuration and setup, you ca
 
 - [X] lazy.nvim
 - [X] kanagawa.nvim
-- [] mini.statusline
-- [] oil.nvim
-- [] Basic options 
-- [] vim-sleuth
-- [ ] editorconf
-- [ ] treesitter.nvim
+- [X] mini.statusline
+- [X] oil.nvim
+- [X] Basic options 
+- [X] vim-sleuth
+- [X] editorconf
+- [X] showkey
+- [X] treesitter.nvim
 - [ ] fzflua
 - [ ] which-key
 - [ ] nvim-lspconfig 
