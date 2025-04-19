@@ -9,8 +9,8 @@ If you are interested my currently used personal configuration and setup, you ca
 
 ## The Plan
 
-- [] lazy.nvim
-- [] kanagawa.nvim
+- [X] lazy.nvim
+- [X] kanagawa.nvim
 - [] mini.statusline
 - [] oil.nvim
 - [] Basic options 
