@@ -5,6 +5,22 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = function()
+		vim.api.nvim_set_hl(0, "Visual", { bg = "#6e5c3a" })
+	end,
+})
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	pattern = "*",
+	callback = function()
+		vim.cmd([[
+      highlight MiniFilesNormal guibg=NONE ctermbg=NONE
+      highlight MiniFilesBorder guifg=#FFA500 guibg=NONE
+    ]])
+	end,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "dotenv" },
 	callback = function()

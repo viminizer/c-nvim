@@ -1,5 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	enabled = false,
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -30,7 +31,7 @@ return {
 			},
 		},
 		window = {
-			width = 35,
+			width = 30,
 			mappings = {
 				["l"] = "open",
 				["h"] = "close_node",
