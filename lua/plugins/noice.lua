@@ -7,6 +7,12 @@ return {
 	},
 	opts = {
 		views = {
+			notify = {
+				timeout = 2000,
+				size = {
+					width = 50,
+				},
+			},
 			cmd_popup = {
 				border = {
 					style = "rounded",
