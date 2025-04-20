@@ -23,4 +23,3 @@ If you are interested my currently used personal configuration and setup, you ca
 - [X] LSP 
 - [X] conform.nvim
 - [X] blink-cmp
-- [ ] snacks.indent
