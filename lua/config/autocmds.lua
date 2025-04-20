@@ -21,6 +21,16 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+	pattern = "*",
+	callback = function()
+		vim.cmd([[
+      highlight NoiceCmdlinePopup guibg=NONE ctermbg=NONE
+      highlight NoiceCmdlinePopupBorder guifg=#FFA500 guibg=NONE
+    ]])
+	end,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "dotenv" },
 	callback = function()
@@ -28,23 +38,23 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimLeavePre", {
-	callback = function()
-		require("persistence").save()
-	end,
-})
-
--- load last session
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = vim.api.nvim_create_augroup("restore_session", { clear = true }),
-	callback = function()
-		if vim.fn.argc() > 0 and vim.fn.getcwd() ~= vim.env.HOME then
-			require("persistence").load()
-		end
-	end,
-	nested = true,
-})
-
+-- vim.api.nvim_create_autocmd("VimLeavePre", {
+-- 	callback = function()
+-- 		require("persistence").save()
+-- 	end,
+-- })
+--
+-- -- load last session
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- 	group = vim.api.nvim_create_augroup("restore_session", { clear = true }),
+-- 	callback = function()
+-- 		if vim.fn.argc() > 0 and vim.fn.getcwd() ~= vim.env.HOME then
+-- 			require("persistence").load()
+-- 		end
+-- 	end,
+-- 	nested = true,
+-- })
+--
 local function augroup(name)
 	return vim.api.nvim_create_augroup("viminizer_" .. name, { clear = true })
 end

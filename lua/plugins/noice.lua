@@ -6,6 +6,17 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	opts = {
+		views = {
+			cmd_popup = {
+				border = {
+					style = "rounded",
+					padding = { 1, 2 },
+				},
+				win_options = {
+					winhighlight = "NormalFloat:NoiceCmdlineNormal,FloatBorder:NoiceCmdlineBorder",
+				},
+			},
+		},
 		lsp = {
 			override = {
 				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
