@@ -1,3 +1,5 @@
+-- stylua: ignore
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.env" },
 	callback = function()
@@ -5,9 +7,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "dotenv" },
 	callback = function()
-		vim.api.nvim_set_hl(0, "Visual", { bg = "#6e5c3a" })
+		vim.b.autoformat = false
 	end,
 })
 
@@ -17,24 +20,31 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.cmd([[
       highlight MiniFilesNormal guibg=NONE ctermbg=NONE
       highlight MiniFilesBorder guifg=#FFA500 guibg=NONE
-    ]])
-	end,
-})
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-	pattern = "*",
-	callback = function()
-		vim.cmd([[
+      highlight MiniFilesTitle guifg=#FFA500 guibg=NONE
+      highlight MiniFilesTitleFocused guifg=#FFA500 guibg=NONE
+      highlight MiniTablineCurrent guifg=#FFA500 guibg=NONE
+      highlight MiniTablineModifiedCurrent guibg=NONE guifg=red
+      highlight MiniTablineFill guibg=NONE
       highlight NoiceCmdlinePopup guibg=NONE ctermbg=NONE
       highlight NoiceCmdlinePopupBorder guifg=#FFA500 guibg=NONE
-    ]])
+      highlight Normal guibg=NONE ctermbg=NONE guifg=#ffa500
+      highlight LineNr guibg=NONE ctermbg=NONE
+      highlight CursorLineNr guibg=NONE ctermbg=NONE
+      highlight SignColumn guibg=NONE ctermbg=NONE
+      highlight FoldColumn guibg=NONE ctermbg=NONE
+      highlight NormalFloat guibg=NONE ctermbg=NONE
+      highlight FloatBorder guibg=NONE ctermbg=NONE guifg=#FFA500
+      highlight FloatTitle guibg=NONE ctermbg=NONE guifg=#FFA500
+      highlight Visual guibg=#3b4252 guifg=#ffa500
+      ]])
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "dotenv" },
+-- format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.css", "*.scss", "*.html", "*.md" }, -- Add your file types
 	callback = function()
-		vim.b.autoformat = false
+		vim.lsp.buf.format({ async = false })
 	end,
 })
 
@@ -59,7 +69,6 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("viminizer_" .. name, { clear = true })
 end
 
--- autosave session
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	group = augroup("checktime"),

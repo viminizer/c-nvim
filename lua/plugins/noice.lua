@@ -22,6 +22,33 @@ return {
 					winhighlight = "NormalFloat:NoiceCmdlineNormal,FloatBorder:NoiceCmdlineBorder",
 				},
 			},
+			popup = {
+				backend = "popup",
+				relative = "editor",
+				position = {
+					row = "50%",
+					col = "50%",
+				},
+				size = {
+					width = 100,
+					height = 20,
+				},
+				border = {
+					style = "rounded",
+				},
+				win_options = {
+					winblend = 100,
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+				},
+			},
+		},
+		commands = {
+			history = {
+				view = "popup",
+			},
+			all = {
+				view = "popup",
+			},
 		},
 		lsp = {
 			override = {
@@ -50,7 +77,6 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>sn", "", desc = "+noice" },
 		{
 			"<leader>nl",
 			function()

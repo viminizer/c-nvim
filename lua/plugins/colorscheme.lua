@@ -18,7 +18,6 @@ return {
 				end,
 			})
 			vim.cmd("colorscheme kanagawa")
-			require("config.highlights")
 		end,
 		build = function()
 			vim.cmd("KanagawaCompile")

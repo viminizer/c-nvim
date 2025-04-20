@@ -40,13 +40,6 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.g.markdown_recommended_style = 0
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
--- format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.css", "*.scss", "*.html", "*.md" }, -- Add your file types
-	callback = function()
-		vim.lsp.buf.format({ async = false })
-	end,
-})
 
 -- Configure diagnostics to use floating windows
 vim.diagnostic.config({
