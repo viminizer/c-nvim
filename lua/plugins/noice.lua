@@ -28,18 +28,38 @@ return {
 			long_message_to_split = true,
 		},
 	},
-  -- stylua: ignore
-  keys = {
-    { "<leader>sn", "", desc = "+noice"},
-    { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-    { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
-    { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
-    { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-  },
+	keys = {
+		{ "<leader>sn", "", desc = "+noice" },
+		{
+			"<leader>nl",
+			function()
+				require("noice").cmd("last")
+			end,
+			desc = "Noice Last Message",
+		},
+		{
+			"<leader>nh",
+			function()
+				require("noice").cmd("history")
+			end,
+			desc = "Noice History",
+		},
+		{
+			"<leader>na",
+			function()
+				require("noice").cmd("all")
+			end,
+			desc = "Noice All",
+		},
+		{
+			"<leader>nd",
+			function()
+				require("noice").cmd("dismiss")
+			end,
+			desc = "Dismiss All",
+		},
+	},
 	config = function(_, opts)
-		-- HACK: noice shows messages from before it was enabled,
-		-- but this is not ideal when Lazy is installing plugins,
-		-- so clear the messages in this case.
 		if vim.o.filetype == "lazy" then
 			vim.cmd([[messages clear]])
 		end
