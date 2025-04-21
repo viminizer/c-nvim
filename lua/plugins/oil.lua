@@ -16,7 +16,7 @@ return {
 			end,
 		},
 		keymaps = {
-			["q"] = "actions.close",
+			["e"] = "actions.close",
 		},
 	},
 }

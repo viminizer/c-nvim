@@ -22,9 +22,14 @@ return {
 		{
 			"<leader>e",
 			function()
-				require("mini.files").open(vim.fn.getcwd())
+				local filepath = vim.api.nvim_buf_get_name(0)
+				if filepath == "" then
+					return
+				end -- handle empty buffers
+				local directory = vim.fn.fnamemodify(filepath, ":p:h")
+				require("mini.files").open(directory, true)
 			end,
-			desc = "Explorer MiniFiles (Root Dir)",
+			desc = "Explorer MiniFiles",
 		},
 	},
 }

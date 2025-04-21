@@ -10,7 +10,7 @@ return {
 			notify = {
 				timeout = 2000,
 				size = {
-					width = 50,
+					max_width = 50,
 				},
 			},
 			cmd_popup = {
@@ -58,6 +58,10 @@ return {
 			},
 		},
 		routes = {
+			{
+				view = "notify",
+				filter = { event = "msg_showmode" },
+			},
 			{
 				filter = {
 					event = "msg_show",
