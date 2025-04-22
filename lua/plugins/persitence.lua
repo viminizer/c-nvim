@@ -1,6 +1,9 @@
 return {
 	"folke/persistence.nvim",
-	enabled = false,
 	event = "BufReadPre",
-	opts = {},
+	config = function()
+		require("persistence").setup({
+			options = { "buffers", "curdir", "tabpages", "winsize", "folds", "localoptions" }, -- Options to save
+		})
+	end,
 }

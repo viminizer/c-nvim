@@ -5,11 +5,14 @@ return {
 	version = "v1.1.1",
 	opts = {
 		keymap = { preset = "enter" },
-
 		appearance = {
 			nerd_font_variant = "mono",
 		},
-		completion = { documentation = { auto_show = true } },
+		completion = {
+			documentation = { auto_show = true, auto_show_delay_ms = 150, window = {
+				winblend = 100,
+			} },
+		},
 		signature = { enabled = true },
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },

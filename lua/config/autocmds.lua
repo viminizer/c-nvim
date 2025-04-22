@@ -1,4 +1,6 @@
--- stylua: ignore
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.env" },
@@ -55,15 +57,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- })
 --
 -- -- load last session
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	group = vim.api.nvim_create_augroup("restore_session", { clear = true }),
--- 	callback = function()
--- 		if vim.fn.argc() > 0 and vim.fn.getcwd() ~= vim.env.HOME then
--- 			require("persistence").load()
--- 		end
--- 	end,
--- 	nested = true,
--- })
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = vim.api.nvim_create_augroup("restore_session", { clear = true }),
+	callback = function()
+		if vim.fn.argc() > 0 and vim.fn.getcwd() ~= vim.env.HOME then
+			require("persistence").load()
+			vim.cmd("doautocmd BufRead")
+		end
+	end,
+	nested = true,
+})
 --
 local function augroup(name)
 	return vim.api.nvim_create_augroup("viminizer_" .. name, { clear = true })

@@ -21,7 +21,6 @@ vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", ex
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
-vim.keymap.set("n", "<leader>qr", "q", { desc = "Record Macro" })
 -- windows
 vim.keymap.set("n", "<leader>wh", "<C-W>s", { desc = "Split Window Below", remap = true })
 vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Split Window Right", remap = true })

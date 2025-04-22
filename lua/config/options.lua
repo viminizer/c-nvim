@@ -39,7 +39,7 @@ vim.opt.fillchars = {
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.g.markdown_recommended_style = 0
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,winpos,localoptions"
 
 -- Configure diagnostics to use floating windows
 vim.diagnostic.config({
