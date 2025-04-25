@@ -44,30 +44,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.css", "*.scss", "*.html", "*.md" }, -- Add your file types
-	callback = function()
-		vim.lsp.buf.format({ async = false })
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
 	end,
 })
-
--- vim.api.nvim_create_autocmd("VimLeavePre", {
--- 	callback = function()
--- 		require("persistence").save()
--- 	end,
--- })
---
--- -- load last session
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = vim.api.nvim_create_augroup("restore_session", { clear = true }),
-	callback = function()
-		if vim.fn.argc() > 0 and vim.fn.getcwd() ~= vim.env.HOME then
-			require("persistence").load()
-			vim.cmd("doautocmd BufRead")
-		end
-	end,
-	nested = true,
-})
---
 local function augroup(name)
 	return vim.api.nvim_create_augroup("viminizer_" .. name, { clear = true })
 end
