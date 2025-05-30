@@ -16,34 +16,34 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
+vim.api.nvim_create_autocmd("colorscheme", {
 	pattern = "*",
 	callback = function()
 		vim.cmd([[
-      highlight MiniFilesNormal guibg=NONE ctermbg=NONE
-      highlight MiniFilesBorder guifg=#FFA500 guibg=NONE
-      highlight MiniFilesTitle guifg=#FFA500 guibg=NONE
-      highlight MiniFilesTitleFocused guifg=#FFA500 guibg=NONE
-      highlight MiniTablineCurrent guifg=#FFA500 guibg=NONE
-      highlight MiniTablineModifiedCurrent guibg=NONE guifg=red
-      highlight MiniTablineFill guibg=NONE
-      highlight NoiceCmdlinePopup guibg=NONE ctermbg=NONE
-      highlight NoiceCmdlinePopupBorder guifg=#FFA500 guibg=NONE
-      highlight Normal guibg=NONE ctermbg=NONE guifg=#ffa500
-      highlight LineNr guibg=NONE ctermbg=NONE
-      highlight CursorLineNr guibg=NONE ctermbg=NONE
-      highlight SignColumn guibg=NONE ctermbg=NONE
-      highlight FoldColumn guibg=NONE ctermbg=NONE
-      highlight NormalFloat guibg=NONE ctermbg=NONE
-      highlight FloatBorder guibg=NONE ctermbg=NONE guifg=#FFA500
-      highlight FloatTitle guibg=NONE ctermbg=NONE guifg=#FFA500
-      highlight Visual guibg=#3b4252 guifg=#ffa500
+      highlight minifilesnormal guibg=none ctermbg=none
+      highlight minifilesborder guifg=#ffa500 guibg=none
+      highlight minifilestitle guifg=#ffa500 guibg=none
+      highlight minifilestitlefocused guifg=#ffa500 guibg=none
+      highlight minitablinecurrent guifg=#ffa500 guibg=none
+      highlight minitablinemodifiedcurrent guibg=none guifg=red
+      highlight minitablinefill guibg=none
+      highlight noicecmdlinepopup guibg=none ctermbg=none
+      highlight noicecmdlinepopupborder guifg=#ffa500 guibg=none
+      highlight normal guibg=none ctermbg=none guifg=#ffa500
+      highlight linenr guibg=none ctermbg=none
+      highlight cursorlinenr guibg=none ctermbg=none
+      highlight signcolumn guibg=none ctermbg=none
+      highlight foldcolumn guibg=none ctermbg=none
+      highlight normalfloat guibg=none ctermbg=none
+      highlight floatborder guibg=none ctermbg=none guifg=#ffa500
+      highlight floattitle guibg=none ctermbg=none guifg=#ffa500
+      highlight visual guibg=#3b4252 guifg=#ffa500
       ]])
 	end,
 })
 
 -- format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("bufwritepre", {
 	pattern = "*",
 	callback = function(args)
 		require("conform").format({ bufnr = args.buf })
@@ -53,8 +53,8 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("viminizer_" .. name, { clear = true })
 end
 
--- Check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+-- check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "focusgained", "termclose", "termleave" }, {
 	group = augroup("checktime"),
 	callback = function()
 		if vim.o.buftype ~= "nofile" then
@@ -63,8 +63,8 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	end,
 })
 
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
+-- highlight on yank
+vim.api.nvim_create_autocmd("textyankpost", {
 	group = augroup("highlight_yank"),
 	callback = function()
 		(vim.hl or vim.highlight).on_yank()
@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
+vim.api.nvim_create_autocmd({ "vimresized" }, {
 	group = augroup("resize_splits"),
 	callback = function()
 		local current_tab = vim.fn.tabpagenr()
@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 })
 
 -- go to last loc when opening a buffer
-vim.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd("bufreadpost", {
 	group = augroup("last_loc"),
 	callback = function(event)
 		local exclude = { "gitcommit" }
@@ -100,10 +100,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("filetype", {
 	group = augroup("close_with_q"),
 	pattern = {
-		"PlenaryTestPopup",
+		"plenarytestpopup",
 		"checkhealth",
 		"dbout",
 		"gitsigns-blame",
@@ -128,14 +128,14 @@ vim.api.nvim_create_autocmd("FileType", {
 			end, {
 				buffer = event.buf,
 				silent = true,
-				desc = "Quit buffer",
+				desc = "quit buffer",
 			})
 		end)
 	end,
 })
 
 -- make it easier to close man-files when opened inline
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("filetype", {
 	group = augroup("man_unlisted"),
 	pattern = { "man" },
 	callback = function(event)
@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("filetype", {
 	group = augroup("wrap_spell"),
 	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
 	callback = function()
@@ -153,8 +153,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Fix conceallevel for json files
-vim.api.nvim_create_autocmd({ "FileType" }, {
+-- fix conceallevel for json files
+vim.api.nvim_create_autocmd({ "filetype" }, {
 	group = augroup("json_conceal"),
 	pattern = { "json", "jsonc", "json5" },
 	callback = function()
@@ -162,8 +162,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
--- Auto create dir when saving a file, in case some intermediate directory does not exist
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+-- auto create dir when saving a file, in case some intermediate directory does not exist
+vim.api.nvim_create_autocmd({ "bufwritepre" }, {
 	group = augroup("auto_create_dir"),
 	callback = function(event)
 		if event.match:match("^%w%w+:[\\/][\\/]") then

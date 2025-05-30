@@ -20,7 +20,7 @@ return {
 	},
 	keys = {
 		{
-			"<leader>e",
+			"<leader>fm",
 			function()
 				local filepath = vim.api.nvim_buf_get_name(0)
 				if filepath == "" then
